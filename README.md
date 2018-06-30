@@ -1,9 +1,17 @@
 # Unity-Built-In-Attributes
 A list of built in Unity Attributes.
 * [Property Inspector](#property-inspector)
+* [Component Related](#component-related)
 * [Serialization](#serialization)
 * [Other](#other)
 * [Undocumented](#undocumented)
+
+Note: Attributes can be placed in a single set of square brackets:
+```c#
+[HideInInspector][SerializeField] int score;
+// can be
+[HideInInspector, SerializeField] int score;
+```
 
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
@@ -26,11 +34,73 @@ A list of built in Unity Attributes.
 [TextArea] public string description = "";
 ```
 
+[ColorUsage](https://docs.unity3d.com/ScriptReference/ColorUsageAttribute.html): Allow alpha channel to be modified, and allow HDR mode.
+```c#
+[ColorUsage(true, true)] public Color color = Color.white;
+```
+
 [Space](https://docs.unity3d.com/ScriptReference/SpaceAttribute.html): Add space between inspector elements.
 ```c#
 public float item1 = 0f;
 [Space(10)]
 public float item2 = 0f;
+```
+
+[Header](https://docs.unity3d.com/ScriptReference/HeaderAttribute.html): Shows a bold label in the inspector.
+```c#
+[Header("Stats")]
+public int health = 100;
+public float speed = 0f;
+[Header("Items")]
+public int ammo = 10;
+```
+
+[ToolTip](https://docs.unity3d.com/ScriptReference/TooltipAttribute.html): Text shown on mouse over.
+```c#
+[ToolTip("The games score.")] public int score = 0;
+```
+
+# Component Related
+[DisallowMultipleComponent](https://docs.unity3d.com/ScriptReference/DisallowMultipleComponent.html): Prevent more than 1 of this component being on a GameObject.
+```c#
+[DisallowMultipleComponent]
+public class MyScript : MonoBehaviour
+{
+}
+```
+
+[RequireComponent](https://docs.unity3d.com/ScriptReference/RequireComponent.html): Tell GameObject to add this component if it isn't already added.
+```c#
+[RequireComponent(typeof(RigidBody))]
+[RequireComponent(typeof(Component1), typeof(Component2), typeof(Component3))]  // You can enter multiple components into attribute.
+public class MyClass : MonoBehaviour
+{
+}
+```
+
+[ExecuteInEditMode](https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html): Will call MonoBehaviour methods like Update and OnEnable while in EditMode.
+```c#
+[ExecuteInEditMode]
+public class MyClass : MonoBehaviour
+{
+}
+```
+
+[ContextMenu](https://docs.unity3d.com/ScriptReference/ContextMenu.html): Add a context menu to a MonoBehaviour or ScriptableObject.
+```c#
+[ContextMenu("Reset Score")]
+public void ResetHealth()
+{
+    health = 100;
+}
+```
+
+[SelectionBase](https://docs.unity3d.com/ScriptReference/SelectionBaseAttribute.html): Will select this GameObject when a sub object is selected in the editor.
+```c#
+[SelectionBase]
+public class MyClass : MonoBehaviour
+{
+}
 ```
 
 # Serialization
@@ -60,23 +130,6 @@ public class MyClass
 ```
 
 # Other
-[ExecuteInEditMode](https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html): Will call MonoBehaviour methods like Update and OnEnable while in EditMode.
-```c#
-[ExecuteInEditMode]
-public class MyClass : MonoBehaviour
-{
-}
-```
-
-[ContextMenu](https://docs.unity3d.com/ScriptReference/ContextMenu.html): Add a context menu to a MonoBehaviour or ScriptableObject.
-```c#
-[ContextMenu("Reset Score")]
-public void ResetHealth()
-{
-    health = 100;
-}
-```
-
 [RuntimeInitializeOnLoadMethod](https://docs.unity3d.com/ScriptReference/RuntimeInitializeOnLoadMethodAttribute.html): Calls a method once before or after the first scene has loaded. Good for initializing Singletons without having to place objects in the scene.
 ```c#
 [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
