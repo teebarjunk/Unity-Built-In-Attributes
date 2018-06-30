@@ -5,6 +5,7 @@ A list of built in Unity Attributes.
 * [Serialization](#serialization)
 * [Other](#other)
 * [Undocumented](#undocumented)
+* [Editor](#editor)
 
 Note: Attributes can be placed in a single set of square brackets:
 ```c#
@@ -12,6 +13,8 @@ Note: Attributes can be placed in a single set of square brackets:
 // can be
 [HideInInspector, SerializeField] int score;
 ```
+
+These aren't all the attributes available, and a few of them are system attributes, not Unity ones.
 
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
@@ -156,5 +159,24 @@ DefaultExecutionOrder: Probably sets the Script Execution order.
 [DefaultExecutionOrder(100)]
 public class MyScript : MonoBehaviour
 {
+}
+```
+
+# Editor
+[MenuItem](https://docs.unity3d.com/ScriptReference/MenuItem.html): Adds a menu to the Editor toolbar.
+```c#
+[MenuItem("MyMenu/Do Something")]
+static void DoSomething()
+{
+    Debug.Log("Doing Something...");
+}
+```
+
+[InitializeOnLoadMethod](https://docs.unity3d.com/ScriptReference/InitializeOnLoadMethodAttribute.html): Called after scripts have been compiled.
+```c#
+[InitializeOnLoadMethod]
+static void OnProjectLoadedInEditor()
+{
+    Debug.Log("Project loaded in Unity Editor");
 }
 ```
