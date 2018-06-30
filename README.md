@@ -142,6 +142,14 @@ static void OnLoad()
 }
 ```
 
+[CreateAssetMenu](https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html): Add an option to Assets/Create for creating a ScriptableObject.
+```c#
+[CreateAssetMenu(menuName = "My ScriptableObject", order = 100)]
+public class MyScriptableObject : ScriptableObject
+{
+}
+```
+
 # Undocumented
 DefaultExecutionOrder: Probably sets the Script Execution order.
 ```c#
