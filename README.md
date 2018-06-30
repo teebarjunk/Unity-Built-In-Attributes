@@ -49,6 +49,16 @@ public float item2 = 0f;
 [FormerlySerializedAs("myValue")] private string m_MyValue;
 ```
 
+[Serializable](https://docs.unity3d.com/ScriptReference/Serializable.html): Make a class Serializable so it will be visible in the inspector.
+```c#
+[System.Serializable]
+public class MyClass
+{
+    public int myInt = 10;
+    public Color myColor = Color.white;
+}
+```
+
 # Other
 [ExecuteInEditMode](https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html): Will call MonoBehaviour methods like Update and OnEnable while in EditMode.
 ```c#
