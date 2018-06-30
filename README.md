@@ -1,9 +1,9 @@
 # Unity-Built-In-Attributes
 A list of built in Unity Attributes.
-[Property Inspector](#property-inspector)
-[Serialization](#serialization)
-[Other](#other)
-[Undocumented](#undocumented)
+* [Property Inspector](#property-inspector)
+* [Serialization](#serialization)
+* [Other](#other)
+* [Undocumented](#undocumented)
 
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
