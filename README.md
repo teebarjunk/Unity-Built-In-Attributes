@@ -1,7 +1,11 @@
 # Unity-Built-In-Attributes
 A list of built in Unity Attributes.
+[Property Inspector](#property-inspector)
+[Serialization](#serialization)
+[Other](#other)
+[Undocumented](#undocumented)
 
-## Property Inspector
+# Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
 ```c#
 [HideInInspector] public bool reset = false;
@@ -29,7 +33,23 @@ public float item1 = 0f;
 public float item2 = 0f;
 ```
 
-## Other
+# Serialization
+[SerializeField](https://docs.unity3d.com/ScriptReference/SerializeField.html): Force Unity to serialize a private field.
+```c#
+[SerializeField] private int score;
+```
+
+[NonSerialized](https://docs.unity3d.com/ScriptReference/NonSerializable.html): Prevent Unity from serializing a public field.
+```c#
+[NonSerialized] public int score;
+```
+
+[FormerlySerializedAs](https://docs.unity3d.com/ScriptReference/Serialization.FormerlySerializedAsAttribute.html): If you changed the name of a serialized property, you can set this to the old name, so save data will still work.
+```c#
+[FormerlySerializedAs("myValue")] private string m_MyValue;
+```
+
+# Other
 [ExecuteInEditMode](https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html): Will call MonoBehaviour methods like Update and OnEnable while in EditMode.
 ```c#
 [ExecuteInEditMode]
@@ -67,7 +87,7 @@ public static bool step1(int instanceID, int line)
 }
 ```
 
-## Undocumented
+# Undocumented
 DefaultExecutionOrder: Probably sets the Script Execution order.
 ```c#
 [DefaultExecutionOrder(100)]
