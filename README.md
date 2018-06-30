@@ -38,7 +38,7 @@ public class MyClass : MonoBehaviour
 }
 ```
 
-[ContextMenu](https://docs.unity3d.com/ScriptReference/ContextMenu.html): Add a context menu to a MonoBehaviour or ScriptabelObject.
+[ContextMenu](https://docs.unity3d.com/ScriptReference/ContextMenu.html): Add a context menu to a MonoBehaviour or ScriptableObject.
 ```c#
 [ContextMenu("Reset Score")]
 public void ResetHealth()
@@ -47,7 +47,7 @@ public void ResetHealth()
 }
 ```
 
-[RuntimeInitializeOnLoadMethod](https://docs.unity3d.com/ScriptReference/RuntimeInitializeOnLoadMethodAttribute.html): Calls an initialization method once before or after the first scene has loaded. Good for initializing Singletons without having to place objects in the scene.
+[RuntimeInitializeOnLoadMethod](https://docs.unity3d.com/ScriptReference/RuntimeInitializeOnLoadMethodAttribute.html): Calls a method once before or after the first scene has loaded. Good for initializing Singletons without having to place objects in the scene.
 ```c#
 [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 static void OnLoad()
