@@ -142,17 +142,6 @@ static void OnLoad()
 }
 ```
 
-[OnOpenAssetAttribute](https://docs.unity3d.com/ScriptReference/Callbacks.OnOpenAssetAttribute.html): Called when double clicking an asset in the project browser.
-```c#
-[OnOpenAssetAttribute(1)]
-public static bool step1(int instanceID, int line)
-{
-    string name = EditorUtility.InstanceIDToObject(instanceID).name;
-    Debug.Log("Open Asset step: 1 (" + name + ")");
-    return false; // we did not handle the open
-}
-```
-
 # Undocumented
 DefaultExecutionOrder: Probably sets the Script Execution order.
 ```c#
@@ -163,6 +152,8 @@ public class MyScript : MonoBehaviour
 ```
 
 # Editor
+These should be used in scripts that are inside an Editor folder.
+
 [MenuItem](https://docs.unity3d.com/ScriptReference/MenuItem.html): Adds a menu to the Editor toolbar.
 ```c#
 [MenuItem("MyMenu/Do Something")]
@@ -178,5 +169,16 @@ static void DoSomething()
 static void OnProjectLoadedInEditor()
 {
     Debug.Log("Project loaded in Unity Editor");
+}
+```
+
+[OnOpenAssetAttribute](https://docs.unity3d.com/ScriptReference/Callbacks.OnOpenAssetAttribute.html): Called when double clicking an asset in the project browser.
+```c#
+[OnOpenAssetAttribute(1)]
+static bool step1(int instanceID, int line)
+{
+    string name = EditorUtility.InstanceIDToObject(instanceID).name;
+    Debug.Log("Open Asset step: 1 (" + name + ")");
+    return false; // we did not handle the open
 }
 ```
