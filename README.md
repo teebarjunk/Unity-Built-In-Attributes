@@ -16,6 +16,15 @@ Note: Attributes can be placed in a single set of square brackets:
 
 These aren't all the attributes available, and a few of them are system attributes, not Unity ones.
 
+Added July 3, 2018:
+* DidReloadScripts
+* PostProcessScene
+* PostProcessBuild
+* Preserve
+* RejectDragAndDropMaterial
+* CustomGridBrush
+* IconName
+
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
 ```c#
@@ -150,6 +159,23 @@ public class MyScriptableObject : ScriptableObject
 }
 ```
 
+[Preserve](https://docs.unity3d.com/ScriptReference/Scripting.PreserveAttribute.html): Preserves a members name when converting to bytecode. Useful if referencing members through reflection.
+```c#
+[Preserve]
+static void Boink()
+{
+    Debug.Log("Boink");
+}
+```
+
+[CustomGridBrush](https://docs.unity3d.com/ScriptReference/CustomGridBrushAttribute.html): "define the class as a grid brush and to make it available in the palette window."
+```c#
+[CustomGridBrush(true, true, true, "Default Brush")]
+public class MyBrush : GridBrush
+{
+}
+```
+
 # Undocumented
 DefaultExecutionOrder: Probably sets the Script Execution order.
 ```c#
@@ -158,6 +184,16 @@ public class MyScript : MonoBehaviour
 {
 }
 ```
+
+RejectDragAndDropMaterial: Probably prevents materials being applied through dragging and dropping in the editor.
+```c#
+[RejectDragAndDropMaterial]
+public class MyRenderer : MonoBehaviour
+{
+}
+```
+
+UnityEditor.IconName: Probably allows you to set a scripts icon?
 
 # Editor
 These should be used in scripts that are inside an Editor folder.
@@ -180,13 +216,47 @@ static void OnProjectLoadedInEditor()
 }
 ```
 
-[OnOpenAssetAttribute](https://docs.unity3d.com/ScriptReference/Callbacks.OnOpenAssetAttribute.html): Called when double clicking an asset in the project browser.
+[DidReloadScripts](https://docs.unity3d.com/ScriptReference/Callbacks.DidReloadScripts.html): Called after scripts have reloaded. Can take an order parameter. Methods with lower orders are called earlier.
 ```c#
+using UnityEditor.Callbacks;
+
+[DidReloadScripts(100)]
+static void OnScriptsReloaded()
+{
+    Debug.Log("Reloaded.");
+}
+#endif
+```
+
+[OnOpenAsset](https://docs.unity3d.com/ScriptReference/Callbacks.OnOpenAssetAttribute.html): Called when double clicking an asset in the project browser.
+```c#
+using UnityEditor.Callbacks;
+
 [OnOpenAssetAttribute(1)]
 static bool step1(int instanceID, int line)
 {
     string name = EditorUtility.InstanceIDToObject(instanceID).name;
     Debug.Log("Open Asset step: 1 (" + name + ")");
     return false; // we did not handle the open
+}
+```
+
+[PostProcessBuild](https://docs.unity3d.com/ScriptReference/Callbacks.PostProcessBuildAttribute.html): Called after game has been built.
+```c#
+using UnityEditor.Callbacks;
+
+[PostProcessBuildAttribute(1)]
+public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
+{
+}
+```
+
+[PostProcessScene](https://docs.unity3d.com/ScriptReference/Callbacks.PostProcessSceneAttribute.html): Called after scene has been built.
+```c#
+using UnityEditor.Callbacks;
+
+[PostProcessSceneAttribute (2)]
+public static void OnPostprocessScene()
+{
 }
 ```
