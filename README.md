@@ -16,14 +16,32 @@ Note: Attributes can be placed in a single set of square brackets:
 
 These aren't all the attributes available, and a few of them are system attributes, not Unity ones.
 
+Added May 6, 2020:
+    GradientUsage
+    Min
+    InspectorName
+    Delayed
+    ContextMenuItem
+    ImageEffectTransformsToLDR
+    ImageEffectAllowedInSceneView
+    ImageEffectOpaque
+    ImageEffectAfterScale
+    ImageEffectUsesCommandBuffer
+    AssemblyIsEditorAssembly
+    ExcludeFromPreset
+    ExcludeFromObjectFactory
+    ExcludeFromCoverage
+    SharedBetweenAnimatorsAttribute
+    BeforeRenderOrderAttribute
+
 Added July 3, 2018:
-* DidReloadScripts
-* PostProcessScene
-* PostProcessBuild
-* Preserve
-* RejectDragAndDropMaterial
-* CustomGridBrush
-* IconName
+    DidReloadScripts
+    PostProcessScene
+    PostProcessBuild
+    Preserve
+    RejectDragAndDropMaterial
+    CustomGridBrush
+    IconName
 
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
@@ -34,6 +52,11 @@ Added July 3, 2018:
 [Range](https://docs.unity3d.com/ScriptReference/RangeAttribute.html): Limit the range of a float or int.
 ```c#
 [Range(0, 100)] public float speed = 2f;
+```
+
+[Min](https://docs.unity3d.com/ScriptReference/MinAttribute.html): Limit minimum value of float or int.
+```c#
+[Min(1.0f)] public float speed = 2.0;
 ```
 
 [Multiline](https://docs.unity3d.com/ScriptReference/MultilineAttribute.html): Show more than one lines.
@@ -49,6 +72,11 @@ Added July 3, 2018:
 [ColorUsage](https://docs.unity3d.com/ScriptReference/ColorUsageAttribute.html): Allow alpha channel to be modified, and allow HDR mode.
 ```c#
 [ColorUsage(true, true)] public Color color = Color.white;
+```
+
+[GradientUsage](https://docs.unity3d.com/ScriptReference/GradientUsageAttribute.html): Use on a gradient to configure the GradientField.
+```c#
+[GradientUsage(true)] public Color color = Color.white;
 ```
 
 [Space](https://docs.unity3d.com/ScriptReference/SpaceAttribute.html): Add space between inspector elements.
@@ -70,6 +98,23 @@ public int ammo = 10;
 [ToolTip](https://docs.unity3d.com/ScriptReference/TooltipAttribute.html): Text shown on mouse over.
 ```c#
 [ToolTip("The games score.")] public int score = 0;
+```
+
+[InspectorName](https://docs.unity3d.com/ScriptReference/InspectorNameAttribute.html): Use on enum to change it's display name.
+```c#
+public enum ModelImporterIndexFormat
+{
+    Auto = 0,
+    [InspectorName("16 bits")]
+    UInt16 = 1,
+    [InspectorName("32 bits")]
+    UInt32 = 2,
+}
+```
+
+[Delayed](https://docs.unity3d.com/ScriptReference/DelayedAttribute.html): Use on float, int, or string to delay property being changed until user presses enter or focus changes.
+```c#
+[Delayed] public string health = 100;
 ```
 
 # Component Related
@@ -101,9 +146,20 @@ public class MyClass : MonoBehaviour
 [ContextMenu](https://docs.unity3d.com/ScriptReference/ContextMenu.html): Add a context menu to a MonoBehaviour or ScriptableObject.
 ```c#
 [ContextMenu("Reset Score")]
-public void ResetHealth()
+public void ResetScore()
 {
-    health = 100;
+    score = 100;
+}
+```
+
+[ContextMenuItem](https://docs.unity3d.com/ScriptReference/ContextMenuItemAttribute.html): Calls a method for a field.
+```c#
+[ContextMenuItem("Reset Score", "ResetScore")]
+var score = 10;
+
+void ResetScore()
+{
+    score = 0;
 }
 ```
 
@@ -138,6 +194,34 @@ public class MyClass
 {
     public int myInt = 10;
     public Color myColor = Color.white;
+}
+```
+
+# Image Effect
+[ImageEffectTransformsToLDR](https://docs.unity3d.com/ScriptReference/ImageEffectTransformsToLDR.html): Use on image effect to cause destination buffer to be LDR buffer.
+
+[ImageEffectAfterScale](https://docs.unity3d.com/ScriptReference/ImageEffectAfterScale.html): "Any Image Effect with this attribute will be rendered after Dynamic Resolution stage."
+
+[ImageEffectAllowedInSceneView](https://docs.unity3d.com/ScriptReference/ImageEffectAllowedInSceneView.html): Allows image effect to work on scene view camera.
+```c#
+[ExecuteInEditMode, ImageEffectAllowedInSceneView]
+public class BloomEffect : MonoBehaviour
+{
+}
+```
+
+[ImageEffectOpaque](https://docs.unity3d.com/ScriptReference/ImageEffectOpaque.html): "Any Image Effect with this attribute will be rendered after opaque geometry but before transparent geometry."
+```c#
+[ImageEffectOpaque]
+void OnRenderImage(RenderTexture source, RenderTexture destination)
+{
+}
+```
+
+[ImageEffectUsesCommandBuffer](https://docs.unity3d.com/ScriptReference/ImageEffectUsesCommandBuffer.html): "Use this attribute when image effects are implemented using Command Buffers."
+```c#
+void OnRenderImage(RenderTexture source, RenderTexture destination)
+{
 }
 ```
 
@@ -176,6 +260,38 @@ public class MyBrush : GridBrush
 }
 ```
 
+[BeforeRenderOrder](https://docs.unity3d.com/ScriptReference/BeforeRenderOrderAttribute.html): "Use this BeforeRenderOrderAttribute when you need to specify a custom callback order for Application.onBeforeRender."
+
+[SharedBetweenAnimators](https://docs.unity3d.com/ScriptReference/SharedBetweenAnimatorsAttribute.html): "...an attribute that specify that this StateMachineBehaviour should be instantiate only once and shared among all Animator instance. This attribute reduce the memory footprint for each controller instance."
+```c#
+[SharedBetweenAnimatorsAttribute]
+public class AttackBehavior : StateMachineBehaviour
+{
+}
+```
+
+[AssemblyIsEditorAssembly](https://docs.unity3d.com/ScriptReference/AssemblyIsEditorAssembly.html): Can use this rather than place the script in an "Editor" folder.
+```c#
+[assembly:AssemblyIsEditorAssembly]
+
+public class MyEditorClass : MonoBehaviour
+{
+}
+```
+
+[ExcludeFromPreset](https://docs.unity3d.com/ScriptReference/ExcludeFromPresetAttribute.html): "Add this attribute to a class to prevent creating a Preset from the instances of the class."
+```c#
+[ExcludeFromPreset]
+public class MyClass : MonoBehaviour
+{
+    public int score = 10; // Won't be used in Preset?
+}
+```
+
+[ExcludeFromObjectFactory](https://docs.unity3d.com/ScriptReference/ExcludeFromObjectFactoryAttribute.html): "Add this attribute to a class to prevent the class and its inherited classes from being created with ObjectFactory methods."
+
+[ExcludeFromCoverage](https://docs.unity3d.com/ScriptReference/TestTools.ExcludeFromCoverageAttribute.html): "Allows you to exclude an Assembly, Class, Constructor, Method or Struct from Coverage."
+
 # Undocumented
 DefaultExecutionOrder: Probably sets the Script Execution order.
 ```c#
@@ -194,6 +310,7 @@ public class MyRenderer : MonoBehaviour
 ```
 
 UnityEditor.IconName: Probably allows you to set a scripts icon?
+
 
 # Editor
 These should be used in scripts that are inside an Editor folder.
