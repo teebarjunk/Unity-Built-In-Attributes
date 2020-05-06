@@ -76,7 +76,7 @@ Added July 3, 2018:
 
 [GradientUsage](https://docs.unity3d.com/ScriptReference/GradientUsageAttribute.html): Use on a gradient to configure the GradientField.
 ```c#
-[GradientUsage(true)] public Color color = Color.white;
+[GradientUsage(true)] public Gradient gradient;
 ```
 
 [Space](https://docs.unity3d.com/ScriptReference/SpaceAttribute.html): Add space between inspector elements.
