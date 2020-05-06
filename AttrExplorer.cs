@@ -8,7 +8,7 @@ using System.Reflection;
 // You may find something new and interesting, including stuff that isn't documented anywhere.
 
 [ExecuteInEditMode]
-public class FindAttr : MonoBehaviour
+public class AttrExplorer : MonoBehaviour
 {
 	public bool toggle_me = false;
 
