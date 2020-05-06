@@ -4,8 +4,8 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-// If you toggle the toggle_me it will print a bunch of attributes in the UnityEngine and UnityEditor assembly.
-// You may find something new an interesting, including stuff that isn't documented.
+// If you toggle the toggle_me it will print a bunch of attributes from the UnityEngine and UnityEditor assembly.
+// You may find something new and interesting, including stuff that isn't documented anywhere.
 
 [ExecuteInEditMode]
 public class FindAttr : MonoBehaviour
