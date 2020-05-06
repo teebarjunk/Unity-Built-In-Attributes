@@ -19,29 +19,29 @@ These aren't all the attributes available, and a few of them are system attribut
 Added May 6, 2020:
 - GradientUsage
 - Min
-    InspectorName
-    Delayed
-    ContextMenuItem
-    ImageEffectTransformsToLDR
-    ImageEffectAllowedInSceneView
-    ImageEffectOpaque
-    ImageEffectAfterScale
-    ImageEffectUsesCommandBuffer
-    AssemblyIsEditorAssembly
-    ExcludeFromPreset
-    ExcludeFromObjectFactory
-    ExcludeFromCoverage
-    SharedBetweenAnimatorsAttribute
-    BeforeRenderOrderAttribute
+- InspectorName
+- Delayed
+- ContextMenuItem
+- ImageEffectTransformsToLDR
+- ImageEffectAllowedInSceneView
+- ImageEffectOpaque
+- ImageEffectAfterScale
+- ImageEffectUsesCommandBuffer
+- AssemblyIsEditorAssembly
+- ExcludeFromPreset
+- ExcludeFromObjectFactory
+- ExcludeFromCoverage
+- SharedBetweenAnimatorsAttribute
+- BeforeRenderOrderAttribute
 
 Added July 3, 2018:
-    DidReloadScripts
-    PostProcessScene
-    PostProcessBuild
-    Preserve
-    RejectDragAndDropMaterial
-    CustomGridBrush
-    IconName
+- DidReloadScripts
+- PostProcessScene
+- PostProcessBuild
+- Preserve
+- RejectDragAndDropMaterial
+- CustomGridBrush
+- IconName
 
 # Property Inspector
 [HideInInspector](https://docs.unity3d.com/ScriptReference/HideInInspector.html): Stops the property from showing up in the inspector.
