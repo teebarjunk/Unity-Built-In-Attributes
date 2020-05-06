@@ -17,8 +17,8 @@ Note: Attributes can be placed in a single set of square brackets:
 These aren't all the attributes available, and a few of them are system attributes, not Unity ones.
 
 Added May 6, 2020:
-    GradientUsage
-    Min
+- GradientUsage
+- Min
     InspectorName
     Delayed
     ContextMenuItem
