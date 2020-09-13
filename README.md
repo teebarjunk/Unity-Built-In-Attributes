@@ -95,9 +95,9 @@ public float speed = 0f;
 public int ammo = 10;
 ```
 
-[ToolTip](https://docs.unity3d.com/ScriptReference/TooltipAttribute.html): Text shown on mouse over.
+[Tooltip](https://docs.unity3d.com/ScriptReference/TooltipAttribute.html): Text shown on mouse over.
 ```c#
-[ToolTip("The games score.")] public int score = 0;
+[Tooltip("The games score.")] public int score = 0;
 ```
 
 [InspectorName](https://docs.unity3d.com/ScriptReference/InspectorNameAttribute.html): Use on enum to change it's display name.
