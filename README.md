@@ -17,7 +17,7 @@ Note: Attributes can be placed in a single set of square brackets:
 These aren't all the attributes available, and a few of them are system attributes, not Unity ones.
 
 Added December 9, 2020:
-- HelpUrl
+- HelpURL
 
 Added May 6, 2020:
 - GradientUsage
@@ -174,9 +174,9 @@ public class MyClass : MonoBehaviour
 }
 ```
 
-[HelpUrl](https://docs.unity3d.com/ScriptReference/HelpURLAttribute.html): Will set a custom documentation URL for this component accesible via the help icon from the component view in the Inspector window within the Unity Editor.
+[HelpURL](https://docs.unity3d.com/ScriptReference/HelpURLAttribute.html): Will set a custom documentation URL for this component accesible via the help icon from the component view in the Inspector window within the Unity Editor.
 ```c#
-[HelpUrl("https://example.com/docs/MyComponent")]
+[HelpURL("https://example.com/docs/MyComponent")]
 public class MyComponent : MonoBehaviour
 {
 }
