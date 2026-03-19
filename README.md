@@ -103,7 +103,7 @@ public int ammo = 10;
 [Tooltip("The games score.")] public int score = 0;
 ```
 
-[InspectorName](https://docs.unity3d.com/ScriptReference/InspectorNameAttribute.html): Use on enum to change it's display name.
+[InspectorName](https://docs.unity3d.com/ScriptReference/InspectorNameAttribute.html): Use on enum to change its display name.
 ```c#
 public enum ModelImporterIndexFormat
 {
